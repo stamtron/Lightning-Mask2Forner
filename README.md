@@ -1,7 +1,6 @@
 # PyTorch Lightning Panoptic Segmentation with Mask2Forner
 
-This README provides instructions on how to train, evaluate, and run inference for a `Panoptic Segmentation Mask2Former` model.
-In addition, it provides instructions on how to upload the developed model to ClearML.
+This README provides instructions on how to train, evaluate, and run inference for a `Panoptic Segmentation Mask2Former` model using PyTorch Lightning and Hugging Face Transformers.
 
 ## Installation
 
