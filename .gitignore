@@ -2,6 +2,8 @@
 data/
 model_to_clearml.py
 output_logs/
+params/panoptic_lettuce.yaml
+params/panoptic_segmentation.yaml
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,8 +1,9 @@
 import logging
 
-import lightning.pytorch as pl
+# import lightning.pytorch as pl
 import torch
 from phenobench.evaluation.auxiliary.panoptic_eval import PanopticQuality
+from pytorch_lightning import LightningModule
 from torch import tensor
 from torch_ema import ExponentialMovingAverage
 from torchmetrics.classification import MulticlassJaccardIndex  # type: ignore
@@ -16,7 +17,7 @@ from transformers import (
 from utils.helper import AverageMeter
 
 
-class LitMask2FormerPanoptic(pl.LightningModule):
+class LitMask2FormerPanoptic(LightningModule):
     def __init__(self, params, processor, **kwargs):
         super().__init__()
         self.save_hyperparameters()
