@@ -1,9 +1,10 @@
 # Files and folders to ignore
-data/
+data/ds*
 model_to_clearml.py
 output_logs/
 params/panoptic_lettuce.yaml
 params/panoptic_segmentation.yaml
+model_weights/*.pth
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
