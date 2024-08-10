@@ -56,10 +56,11 @@ class LitMask2FormerPanoptic(pl.LightningModule):
             self.ema = ExponentialMovingAverage(model.model.parameters(), decay=self.params["model"]["ema_decay"])
 
         # FIX THAT ###
-        if self.params["model"]["pth_path"] is not None:
-            print("Loading pth model...")
-            print(self.params["model"]["pth_path"])
-            model.load_state_dict(torch.load(self.params["model"]["pth_path"]))
+        # print(self.params["model"]["pth_path"] is not None)
+        # if self.params["model"]["pth_path"] is not None:
+        #     print("Loading pth model...")
+        #     print(self.params["model"]["pth_path"])
+        #     model.load_state_dict(torch.load(self.params["model"]["pth_path"]))
         return model
 
     def forward(self, batch):

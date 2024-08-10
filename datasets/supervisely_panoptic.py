@@ -70,7 +70,7 @@ def combine_masks(img, ann_path, mode):
                     pixel_mask.paste(Image.fromarray((mask * 255).astype(np.uint8)), (xmin, ymin))
 
                     # Add the corresponding class label to the list
-                    class_labels = np.append(class_labels, 1 if obj["classTitle"] == "Plant" else 0)
+                    class_labels = np.append(class_labels, 1 if obj["classId"] == "6462823" else 0)
 
     # Convert the pixel mask to a NumPy array for plotting
     semantics_array = np.array(pixel_mask, dtype=np.int32)

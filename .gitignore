@@ -1,3 +1,8 @@
+# Files and folders to ignore
+data/
+model_to_clearml.py
+output_logs/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
