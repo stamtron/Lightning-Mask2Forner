@@ -1,0 +1,80 @@
+project:
+  project_name: "panoptic_segmentation_mask2former"
+  experiment_name: "mask2former_training"
+  seed: 0
+  overfit: False
+
+version_info:
+  model_name: panoptic_segmentation.pth # String
+  tag: production
+  project_name: models # String
+  task_name: panoptic_segmentation.pth # String
+  framework: PyTorch # String
+
+inference:
+  threshold: 0.5
+  mask_threshold: 0.5
+  overlap_mask_area_threshold: 0.8
+  output_folder: output_inference/
+  ckpt_path: null
+  pth_path:
+  save_detections: True
+
+model:
+  pretrained: facebook/mask2former-swin-small-coco-panoptic
+  ckpt_path: None
+  pth_path: None
+  mode: panoptic
+  ema_decay: 0.9998
+  num_queries: 300
+
+data:
+  train_root: data/supervisely-persons-DatasetNinja/
+  valid_root: data/supervisely-persons-DatasetNinja/
+  empty_trays_path: null
+  non_syngenta_data_path: null
+  synthetic_path: null
+  target_type: plant_instances
+  img_size: 1024
+  num_workers: 4
+  ds_mean: [124.574, 97.684, 65.202] #[0.485, 0.456, 0.406] #
+  ds_std: [51.273, 45.172, 34.660] #[0.229, 0.224, 0.225] #
+  p_randomresizedcrop: 1.0
+  p_horizontalflip: 0.5
+  p_verticalflip: 0.5
+  p_rgbshift: 1.0
+  p_randombrightnesscontrast: 1.0
+  p_blur: 0.4
+  p_rotate: 0.1
+  blackout: False
+
+save:
+  save_model_path: save_path/
+
+training:
+  max_steps: 18000
+  log_every_n_steps: 20
+  check_val_every_n_epoch: 1
+  do_val_loss: True
+  do_val_metrics: True
+  batch_size: 1
+  accumulate_grad_batches: 10
+  gradient_clip_val: 0.01
+  patience: 100
+  max_epochs: 500
+
+optimizer:
+  name: AdamW
+  lr: 0.0001
+  encoder_lr_factor: 0.1
+  weight_decay: 0.05
+
+scheduler:
+  name: PolynomialLR
+  milestones: [3500, 5000]
+  gamma: 0.1
+  warmup_steps: 440
+  warmup_start_multiplier: 0.1
+
+logging:
+  output_folder: ../output_logs  # Path to the log folder
