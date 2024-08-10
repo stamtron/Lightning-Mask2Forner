@@ -1,0 +1,19 @@
+image: python:3.11
+
+variables:
+  DOCKER_TLS_CERTDIR: "/certs"
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - lint
+
+lint:
+  stage: lint
+  before_script:
+    - echo -e "machine gitlab.com\nlogin ${CI_JOB_TOKEN}\npassword ${PERSONAL_TOKEN}" > ~/.netrc
+    - pip install black==22.3.0 flake8==4.0.1 isort==5.12.0
+  script:
+    - black --check --diff --line-length 170 .
+    - flake8 --max-line-length 170 .
+    - isort --profile black --filter-files --check-only --diff .
